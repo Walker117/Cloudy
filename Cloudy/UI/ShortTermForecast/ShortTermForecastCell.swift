@@ -9,10 +9,7 @@ import SwiftUI
 
 struct ShortTermForecastCell: View {
     
-    @State var time = "7"
-    @State var amPm = "am"
-    @State var temperature = "59°"
-    @State var isNow = true
+    let viewModel: ShortForecastModel
     
     var body: some View {
         content
@@ -25,8 +22,8 @@ struct ShortTermForecastCell: View {
             Image(systemName: "cloud.fill")
                 .padding(.top, 17)
             
-            Text(temperature)
-                .fontWeight(isNow ? .semibold : .regular)
+            Text(viewModel.temperature)
+                .fontWeight(viewModel.isNow ? .semibold : .regular)
                 .padding(.top, 20)
         }
         .foregroundColor(.lightBlue)
@@ -34,11 +31,11 @@ struct ShortTermForecastCell: View {
     
     var timeView: some View {
         HStack(alignment: .bottom, spacing: 0) {
-            Text(isNow ? "Now" : time)
-                .fontWeight(isNow ? .semibold : .regular)
+            Text(viewModel.isNow ? "Now" : viewModel.time)
+                .fontWeight(viewModel.isNow ? .semibold : .regular)
             
-            if !isNow {
-                Text(amPm.uppercased())
+            if !viewModel.isNow {
+                Text(viewModel.amPm.uppercased())
                     .font(.subheadline)
             }
         }
@@ -50,7 +47,7 @@ struct ShortTermForecastCell_Previews: PreviewProvider {
         ZStack {
             Color.secondary
             
-            ShortTermForecastCell()
+            ShortTermForecastCell(viewModel: ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: true))
                 .frame(height: 100)
         }
         .ignoresSafeArea()

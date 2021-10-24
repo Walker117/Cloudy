@@ -7,11 +7,9 @@
 
 import SwiftUI
 
-struct Weather: View {
+struct Weather<ViewModel>: View where ViewModel: WeatherViewModel {
     
-    @State var cityName = "San Jose"
-    @State var status = "Mostly Cloudy"
-    @State var temperature = "63"
+    let viewModel: ViewModel
     
     var body: some View {
         ZStack {
@@ -32,13 +30,13 @@ struct Weather: View {
     
     var header: some View {
         VStack(spacing: 0) {
-            Text(cityName)
+            Text(viewModel.headerModel.cityName)
                 .font(.system(size: 32))
                 .padding(.top, 105)
             
-            Text(status)
+            Text(viewModel.headerModel.status)
             
-            Text(temperature)
+            Text(viewModel.headerModel.temperature)
                 .font(.system(size: 100))
                 .fontWeight(.thin)
                 .overlay(temperatureIcon, alignment: .topTrailing)
@@ -47,8 +45,11 @@ struct Weather: View {
     }
     
     var shortForecast: some View {
-        ShortTermForecast()
-            
+        // TODO: Refactor to use actual data
+        ShortTermForecast(models: .constant([
+            ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: true),
+            ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: false)
+        ]))
     }
     
     var temperatureIcon: some View {
@@ -67,6 +68,6 @@ struct Weather: View {
 
 struct Weather_Previews: PreviewProvider {
     static var previews: some View {
-        Weather()
+        Weather(viewModel: PreviewWeatherViewModel())
     }
 }

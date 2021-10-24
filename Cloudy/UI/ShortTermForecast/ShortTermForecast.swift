@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ShortTermForecast: View {
+    
+    @Binding var models: [ShortForecastModel]
+    
     let backgroundColor = #colorLiteral(red: 0.09411764706, green: 0.1529411765, blue: 0.1960784314, alpha: 0.799652908)
     let frameColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
+    
     var body: some View {
         ZStack {
             Color(backgroundColor)
@@ -26,7 +30,6 @@ struct ShortTermForecast: View {
             Spacer()
             
             forecastScrollableView
-                
             
             Spacer()
             
@@ -37,14 +40,11 @@ struct ShortTermForecast: View {
     var forecastScrollableView: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 25) {
-                ShortTermForecastCell()
-                ShortTermForecastCell(isNow: false)
-                ShortTermForecastCell(isNow: false)
-                ShortTermForecastCell(isNow: false)
-                ShortTermForecastCell(isNow: false)
-                ShortTermForecastCell(isNow: false)
-                ShortTermForecastCell(isNow: false)
-            }.padding([.leading, .trailing], 20)
+                ForEach(models, id: \.self) { vm in
+                    ShortTermForecastCell(viewModel: vm)
+                }
+            }
+            .padding([.leading, .trailing], 20)
         }
     }
     
@@ -63,7 +63,10 @@ struct ShortTermForecast_Previews: PreviewProvider {
                 .resizable()
                 .ignoresSafeArea()
             
-            ShortTermForecast()
+            ShortTermForecast(models: .constant([
+                ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: true),
+                ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: false)
+            ]))
                 
         }
         .ignoresSafeArea()
