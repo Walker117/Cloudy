@@ -54,11 +54,13 @@
 		FA4ADF022723A575005B5557 /* CloudyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyUITests.swift; sourceTree = "<group>"; };
 		FA4ADF042723A575005B5557 /* CloudyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FA6D76A8272615D00059DB1E /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		FA6D76AB27263A310059DB1E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		FA6D76AC27263AA30059DB1E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		FAEC1AFF2725D27100E1E846 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		FAEC1B022725D69F00E1E846 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FAEC1B052725DD6A00E1E846 /* ShortTermForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermForecast.swift; sourceTree = "<group>"; };
 		FAEC1B082725E37700E1E846 /* ShortTermForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermForecastCell.swift; sourceTree = "<group>"; };
-		FAEC1B0E2725EE7200E1E846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FAEC1B0E2725EE7200E1E846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,9 +123,8 @@
 				FA3C79752725F15200F2BA0E /* Models */,
 				FAEC1B042725D6DD00E1E846 /* UI */,
 				FAEC1B012725D69100E1E846 /* Utility */,
+				FA6D76AD27263BB30059DB1E /* Resources */,
 				FA4ADEE72723A574005B5557 /* CloudyApp.swift */,
-				FA4ADEEB2723A575005B5557 /* Assets.xcassets */,
-				FAEC1B0E2725EE7200E1E846 /* Info.plist */,
 				FA4ADEED2723A575005B5557 /* Preview Content */,
 			);
 			path = Cloudy;
@@ -161,6 +162,25 @@
 				FA6D76A8272615D00059DB1E /* WeatherViewModel.swift */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		FA6D76AA27263A110059DB1E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D76AB27263A310059DB1E /* Debug.xcconfig */,
+				FA6D76AC27263AA30059DB1E /* Release.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		FA6D76AD27263BB30059DB1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA6D76AA27263A110059DB1E /* Config */,
+				FAEC1B0E2725EE7200E1E846 /* Info.plist */,
+				FA4ADEEB2723A575005B5557 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FAEC1B012725D69100E1E846 /* Utility */ = {
@@ -367,6 +387,7 @@
 /* Begin XCBuildConfiguration section */
 		FA4ADF062723A575005B5557 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA6D76AB27263A310059DB1E /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -428,6 +449,7 @@
 		};
 		FA4ADF072723A575005B5557 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA6D76AC27263AA30059DB1E /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -492,7 +514,7 @@
 				DEVELOPMENT_TEAM = G429L4CLTH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Cloudy/Info.plist;
+				INFOPLIST_FILE = Cloudy/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -524,7 +546,7 @@
 				DEVELOPMENT_TEAM = G429L4CLTH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Cloudy/Info.plist;
+				INFOPLIST_FILE = Cloudy/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
