@@ -12,4 +12,6 @@ struct ShortForecastModel: Hashable {
     let amPm: String
     let temperature: String
     let isNow: Bool
+    let cloudCoverage: Double
+    let isNight: Bool
 }

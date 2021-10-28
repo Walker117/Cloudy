@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Weather(viewModel: RealWeatherViewModel())
+        // TODO: Use DI
+        Weather(viewModel: RealWeatherViewModel(RealWeatherLoaderService(RealWeatherRawDataToModelsConverter())))
     }
 }
 

@@ -17,6 +17,9 @@
 		FA4ADF032723A575005B5557 /* CloudyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4ADF022723A575005B5557 /* CloudyUITests.swift */; };
 		FA4ADF052723A575005B5557 /* CloudyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4ADF042723A575005B5557 /* CloudyUITestsLaunchTests.swift */; };
 		FA6D76A9272615D00059DB1E /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6D76A8272615D00059DB1E /* WeatherViewModel.swift */; };
+		FA98C64B272A481F00E8BEDE /* RawWeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98C64A272A481F00E8BEDE /* RawWeatherResponse.swift */; };
+		FA98C64D272A4B8400E8BEDE /* WeatherRawDataToModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98C64C272A4B8400E8BEDE /* WeatherRawDataToModels.swift */; };
+		FACA3A912727A32D003E90FC /* WeatherLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA3A902727A32D003E90FC /* WeatherLoaderService.swift */; };
 		FAEC1B002725D27100E1E846 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC1AFF2725D27100E1E846 /* Weather.swift */; };
 		FAEC1B032725D69F00E1E846 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC1B022725D69F00E1E846 /* Colors.swift */; };
 		FAEC1B062725DD6A00E1E846 /* ShortTermForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEC1B052725DD6A00E1E846 /* ShortTermForecast.swift */; };
@@ -56,6 +59,9 @@
 		FA6D76A8272615D00059DB1E /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		FA6D76AB27263A310059DB1E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		FA6D76AC27263AA30059DB1E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		FA98C64A272A481F00E8BEDE /* RawWeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawWeatherResponse.swift; sourceTree = "<group>"; };
+		FA98C64C272A4B8400E8BEDE /* WeatherRawDataToModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRawDataToModels.swift; sourceTree = "<group>"; };
+		FACA3A902727A32D003E90FC /* WeatherLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLoaderService.swift; sourceTree = "<group>"; };
 		FAEC1AFF2725D27100E1E846 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		FAEC1B022725D69F00E1E846 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FAEC1B052725DD6A00E1E846 /* ShortTermForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermForecast.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 		FA4ADEE62723A574005B5557 /* Cloudy */ = {
 			isa = PBXGroup;
 			children = (
+				FACA3A8F2727A2C3003E90FC /* Services */,
 				FA3C79752725F15200F2BA0E /* Models */,
 				FAEC1B042725D6DD00E1E846 /* UI */,
 				FAEC1B012725D69100E1E846 /* Utility */,
@@ -181,6 +188,24 @@
 				FA4ADEEB2723A575005B5557 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FACA3A8F2727A2C3003E90FC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FACA3A952727B956003E90FC /* WeatherLoaderService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		FACA3A952727B956003E90FC /* WeatherLoaderService */ = {
+			isa = PBXGroup;
+			children = (
+				FACA3A902727A32D003E90FC /* WeatherLoaderService.swift */,
+				FA98C64A272A481F00E8BEDE /* RawWeatherResponse.swift */,
+				FA98C64C272A4B8400E8BEDE /* WeatherRawDataToModels.swift */,
+			);
+			path = WeatherLoaderService;
 			sourceTree = "<group>";
 		};
 		FAEC1B012725D69100E1E846 /* Utility */ = {
@@ -341,10 +366,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4ADEEA2723A574005B5557 /* ContentView.swift in Sources */,
+				FACA3A912727A32D003E90FC /* WeatherLoaderService.swift in Sources */,
 				FA6D76A9272615D00059DB1E /* WeatherViewModel.swift in Sources */,
 				FA3C79772725F17100F2BA0E /* ShortForecastModel.swift in Sources */,
 				FAEC1B092725E37700E1E846 /* ShortTermForecastCell.swift in Sources */,
 				FAEC1B062725DD6A00E1E846 /* ShortTermForecast.swift in Sources */,
+				FA98C64D272A4B8400E8BEDE /* WeatherRawDataToModels.swift in Sources */,
+				FA98C64B272A481F00E8BEDE /* RawWeatherResponse.swift in Sources */,
 				FAEC1B032725D69F00E1E846 /* Colors.swift in Sources */,
 				FA3C79792725F53A00F2BA0E /* WeatherHeaderModel.swift in Sources */,
 				FAEC1B002725D27100E1E846 /* Weather.swift in Sources */,
@@ -520,7 +548,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +580,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -575,7 +603,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G429L4CLTH;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -600,7 +628,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = G429L4CLTH;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

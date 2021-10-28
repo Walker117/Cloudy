@@ -38,7 +38,7 @@ struct ShortTermForecast: View {
     }
     
     var forecastScrollableView: some View {
-        ScrollView(.horizontal) {
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 25) {
                 ForEach(models, id: \.self) { vm in
                     ShortTermForecastCell(viewModel: vm)
@@ -46,6 +46,7 @@ struct ShortTermForecast: View {
             }
             .padding([.leading, .trailing], 20)
         }
+        
     }
     
     var borderLine: some View {
@@ -64,8 +65,9 @@ struct ShortTermForecast_Previews: PreviewProvider {
                 .ignoresSafeArea()
             
             ShortTermForecast(models: .constant([
-                ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: true),
-                ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: false)
+                ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: true, cloudCoverage: 50, isNight: false),
+                ShortForecastModel(time: "8", amPm: "am", temperature: "59°", isNow: false, cloudCoverage: 30, isNight: false),
+                ShortForecastModel(time: "9", amPm: "am", temperature: "59°", isNow: true, cloudCoverage: 0, isNight: false),
             ]))
                 
         }

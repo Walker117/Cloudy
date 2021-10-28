@@ -11,32 +11,48 @@ struct Weather<ViewModel>: View where ViewModel: WeatherViewModel {
     
     let viewModel: ViewModel
     
+    @State private var header: WeatherHeaderModel?
+    @State private var models: [ShortForecastModel] = []
+    @State private var isLoading: Bool = false
+    
     var body: some View {
         ZStack {
             background
             content
         }
+        .onAppear {
+            viewModel.fetchWeather($header, $models, $isLoading)
+        }
     }
     
     var content: some View {
         VStack {
-            header
-            
-            shortForecast
-            
-            Spacer()
+            if isLoading {
+                progressView
+            } else {
+                headerView
+                shortForecast
+                Spacer()
+            }
         }
     }
     
-    var header: some View {
+    var progressView: some View {
+        ProgressView("Loading...")
+            .tint(.white)
+            .foregroundColor(.white)
+            .font(.title)
+    }
+    
+    var headerView: some View {
         VStack(spacing: 0) {
-            Text(viewModel.headerModel.cityName)
+            Text(header?.cityName ?? "")
                 .font(.system(size: 32))
                 .padding(.top, 105)
             
-            Text(viewModel.headerModel.status)
+            Text(header?.status ?? "")
             
-            Text(viewModel.headerModel.temperature)
+            Text(header?.temperature ?? "")
                 .font(.system(size: 100))
                 .fontWeight(.thin)
                 .overlay(temperatureIcon, alignment: .topTrailing)
@@ -45,11 +61,7 @@ struct Weather<ViewModel>: View where ViewModel: WeatherViewModel {
     }
     
     var shortForecast: some View {
-        // TODO: Refactor to use actual data
-        ShortTermForecast(models: .constant([
-            ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: true),
-            ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: false)
-        ]))
+        ShortTermForecast(models: $models)
     }
     
     var temperatureIcon: some View {

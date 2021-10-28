@@ -19,7 +19,7 @@ struct ShortTermForecastCell: View {
         VStack(spacing: 0) {
             timeView
             
-            Image(systemName: "cloud.fill")
+            Image(systemName: cloudIconName())
                 .padding(.top, 17)
             
             Text(viewModel.temperature)
@@ -42,12 +42,24 @@ struct ShortTermForecastCell: View {
     }
 }
 
+extension ShortTermForecastCell {
+    func cloudIconName() -> String {
+        if viewModel.cloudCoverage > 65 {
+            return "cloud.fill"
+        } else if viewModel.cloudCoverage > 35 {
+            return viewModel.isNight ? "cloud.moon.fill": "cloud.sun.fill"
+        } else {
+            return viewModel.isNight ? "moon.fill" : "sun.max.fill"
+        }
+    }
+}
+
 struct ShortTermForecastCell_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.secondary
             
-            ShortTermForecastCell(viewModel: ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: true))
+            ShortTermForecastCell(viewModel: ShortForecastModel(time: "7", amPm: "am", temperature: "59°", isNow: true, cloudCoverage: 30, isNight: false))
                 .frame(height: 100)
         }
         .ignoresSafeArea()
