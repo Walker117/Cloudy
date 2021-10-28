@@ -23,6 +23,8 @@ class RealWeatherViewModel: WeatherViewModel {
     }
     
     func fetchWeather(_ header: Binding<WeatherHeaderModel?>, _ models: Binding<[ShortForecastModel]>, _ isLoading: Binding<Bool>) {
+        isLoading.wrappedValue = true
+        
         weatherLoader.fetchWeather()
             .sink { completion in
                 switch completion {
@@ -30,10 +32,12 @@ class RealWeatherViewModel: WeatherViewModel {
                     break
                 case .failure(let error):
                     print(error)
+                    isLoading.wrappedValue = false
                 }
             } receiveValue: { value in
                 header.wrappedValue = value.0
                 models.wrappedValue = value.1
+                isLoading.wrappedValue = false
             }
             .store(in: &bag)
     }
